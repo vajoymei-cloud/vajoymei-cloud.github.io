@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joymei | Real Estate Virtual Assistant Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0e0e0e;
+    --white: #f9f6f1;
+    --cream: #f0ebe1;
+    --warm-gray: #c8c0b4;
+    --mid-gray: #7a7570;
+    --accent: #b5925a;
+    --accent-light: #d4b48a;
+    --dark-brown: #3a2e24;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--white);
+    color: var(--black);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.25rem 4rem;
+    background: rgba(249,246,241,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(181,146,90,0.15);
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem; font-weight: 600; letter-spacing: 0.04em;
+    color: var(--black);
+  }
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a {
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--mid-gray); text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── SECTIONS ── */
+  section { padding: 7rem 4rem; }
+
+  /* ── COVER ── */
+  #cover {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+    padding-top: 9rem;
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+  }
+  #cover::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 48%; height: 100%;
+    background: var(--cream);
+    z-index: 0;
+  }
+  .cover-text { position: relative; z-index: 1; }
+  .cover-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.5rem;
+    display: flex; align-items: center; gap: 0.75rem;
+  }
+  .cover-eyebrow::before {
+    content: ''; display: block;
+    width: 2rem; height: 1px; background: var(--accent);
+  }
+  .cover-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 5.5vw, 5.5rem);
+    font-weight: 300; line-height: 1.05;
+    color: var(--black); margin-bottom: 0.5rem;
+  }
+  .cover-title em {
+    font-style: italic; color: var(--accent);
+  }
+  .cover-subtitle {
+    font-size: 0.88rem; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--mid-gray); margin-bottom: 2rem; margin-top: 1rem;
+  }
+  .cover-desc {
+    font-size: 1.05rem; color: var(--dark-brown);
+    max-width: 440px; margin-bottom: 3rem; line-height: 1.8;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 1rem 2.4rem;
+    background: var(--black);
+    color: var(--white);
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+  .btn-outline {
+    display: inline-block;
+    padding: 1rem 2.4rem;
+    border: 1px solid var(--black);
+    color: var(--black);
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none; margin-left: 1rem;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { background: var(--black); color: var(--white); }
+
+  .cover-visual {
+    position: relative; z-index: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 2rem;
+  }
+  .avatar-frame {
+    width: 320px; height: 380px;
+    background: linear-gradient(145deg, var(--accent-light), var(--warm-gray));
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .avatar-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .avatar-label {
+    position: absolute; bottom: -1px; left: -1px; right: -1px;
+    background: var(--black); color: var(--white);
+    padding: 1rem 1.5rem;
+    font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .stats-row {
+    display: flex; gap: 2rem;
+  }
+  .stat-box {
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--warm-gray);
+    background: var(--white);
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.2rem; font-weight: 600; color: var(--accent);
+  }
+  .stat-label {
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--mid-gray); margin-top: 0.25rem;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex; align-items: center; gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--warm-gray); }
+  .divider-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ── SECTION TITLE ── */
+  .section-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+    font-weight: 300; line-height: 1.1;
+    color: var(--black); margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--black);
+    color: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+  #about .section-title { color: var(--white); }
+  #about .section-eyebrow { color: var(--accent-light); }
+  .about-body {
+    font-size: 1.08rem; line-height: 1.9;
+    color: rgba(249,246,241,0.8);
+  }
+  .about-body p { margin-bottom: 1.25rem; }
+  .about-body strong { color: var(--accent-light); font-weight: 500; }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+  .skill-item {
+    background: var(--black);
+    padding: 1.5rem;
+    border-left: 2px solid transparent;
+    transition: border-color 0.3s;
+  }
+  .skill-item:hover { border-color: var(--accent); }
+  .skill-icon {
+    font-size: 1.5rem; margin-bottom: 0.5rem;
+  }
+  .skill-name {
+    font-size: 0.82rem; letter-spacing: 0.06em; font-weight: 500;
+    color: var(--white); margin-bottom: 0.25rem;
+  }
+  .skill-desc {
+    font-size: 0.75rem; color: rgba(249,246,241,0.5);
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--cream); }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    margin-top: 3rem;
+    background: var(--warm-gray);
+  }
+  .service-card {
+    background: var(--cream);
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.4s;
+  }
+  .service-card:hover { background: var(--white); }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--accent);
+    transition: height 0.4s;
+  }
+  .service-card:hover::before { height: 100%; }
+  .service-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 4rem; font-weight: 300;
+    color: rgba(181,146,90,0.2);
+    position: absolute; top: 1.5rem; right: 2rem;
+    line-height: 1;
+  }
+  .service-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1rem;
+  }
+  .service-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 400;
+    color: var(--black); margin-bottom: 1.25rem;
+  }
+  .service-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: 0.6rem;
+  }
+  .service-list li {
+    font-size: 0.85rem; color: var(--dark-brown);
+    padding-left: 1rem;
+    position: relative;
+  }
+  .service-list li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--accent);
+  }
+  .service-rate {
+    margin-top: 2rem;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--accent);
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  /* ── CASE STUDY ── */
+  #case-study {
+    background: var(--white);
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .case-left { position: sticky; top: 8rem; }
+  .case-brand-block {
+    background: var(--black);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--white);
+  }
+  .case-brand-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem; font-weight: 400; margin-bottom: 0.25rem;
+  }
+  .case-brand-sub {
+    font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent-light);
+  }
+  .case-brand-bio {
+    margin-top: 1rem;
+    font-size: 0.82rem; color: rgba(249,246,241,0.7); line-height: 1.7;
+  }
+  .results-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
+    background: var(--warm-gray);
+  }
+  .result-box {
+    background: var(--cream);
+    padding: 1.5rem;
+    text-align: center;
+  }
+  .result-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5rem; font-weight: 600; color: var(--accent);
+  }
+  .result-label {
+    font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--mid-gray); margin-top: 0.25rem;
+  }
+
+  .case-right {}
+  .challenge-block, .solution-block {
+    margin-bottom: 2.5rem;
+  }
+  .block-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--warm-gray);
+  }
+  .block-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem; font-weight: 400;
+    color: var(--black); margin-bottom: 0.75rem;
+  }
+  .block-body {
+    font-size: 0.88rem; color: var(--dark-brown); line-height: 1.8;
+  }
+  .timeline {
+    display: flex; flex-direction: column; gap: 0;
+    margin-top: 1.5rem;
+  }
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: 1rem;
+    position: relative;
+    padding-bottom: 1.5rem;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .t-dot {
+    width: 2rem; height: 2rem;
+    background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.65rem; font-weight: 500; color: var(--white);
+    flex-shrink: 0; margin-top: 0.1rem;
+  }
+  .timeline-item:not(:last-child) .t-dot::after {
+    content: '';
+    position: absolute;
+    left: 1rem; top: 2.1rem;
+    width: 1px; height: calc(100% - 2.1rem);
+    background: var(--warm-gray);
+  }
+  .t-content { font-size: 0.85rem; color: var(--dark-brown); }
+  .t-title { font-weight: 500; color: var(--black); margin-bottom: 0.2rem; }
+
+  /* ── SAMPLE WORK ── */
+  #sample-work { background: var(--black); color: var(--white); }
+  #sample-work .section-title { color: var(--white); }
+  #sample-work .section-eyebrow { color: var(--accent-light); }
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+  .work-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 2rem;
+    transition: background 0.3s, border-color 0.3s;
+    cursor: default;
+  }
+  .work-card:hover {
+    background: rgba(181,146,90,0.08);
+    border-color: rgba(181,146,90,0.3);
+  }
+  .work-card-type {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent-light); margin-bottom: 1rem;
+  }
+  .work-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.3rem; font-weight: 400;
+    color: var(--white); margin-bottom: 0.75rem;
+  }
+  .work-card-body {
+    font-size: 0.8rem; color: rgba(249,246,241,0.55); line-height: 1.7;
+  }
+  .mock-instagram {
+    margin-top: 1.25rem;
+    background: rgba(255,255,255,0.06);
+    border-radius: 2px;
+    padding: 1rem;
+    font-size: 0.75rem;
+    color: rgba(249,246,241,0.7);
+    font-style: italic;
+    border-left: 2px solid var(--accent);
+  }
+  .checklist {
+    list-style: none; margin-top: 1rem;
+    display: flex; flex-direction: column; gap: 0.5rem;
+  }
+  .checklist li {
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.78rem; color: rgba(249,246,241,0.65);
+  }
+  .checklist li::before {
+    content: '✓';
+    color: var(--accent); font-size: 0.7rem;
+    width: 1.2rem; flex-shrink: 0;
+  }
+
+  /* ── PROCESS ── */
+  #process { background: var(--cream); }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2px;
+    background: var(--warm-gray);
+    margin-top: 3rem;
+  }
+  .process-step {
+    background: var(--cream);
+    padding: 2.5rem 1.75rem;
+    position: relative;
+    transition: background 0.3s;
+  }
+  .process-step:hover { background: var(--white); }
+  .step-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem; font-weight: 300;
+    color: rgba(181,146,90,0.25); line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .step-name {
+    font-size: 0.82rem; letter-spacing: 0.06em; font-weight: 500;
+    color: var(--black); margin-bottom: 0.5rem;
+  }
+  .step-desc {
+    font-size: 0.75rem; color: var(--mid-gray); line-height: 1.6;
+  }
+  .process-note {
+    margin-top: 3rem;
+    padding: 2rem;
+    border: 1px solid var(--accent);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .process-note-icon {
+    font-size: 2rem;
+  }
+  .process-note-text {
+    font-size: 0.88rem; color: var(--dark-brown); line-height: 1.7;
+  }
+
+  /* ── CTA ── */
+  #cta {
+    background: var(--black);
+    text-align: center;
+    min-height: 70vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 7rem 4rem;
+  }
+  #cta::before {
+    content: 'JOYMEI';
+    position: absolute;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18vw; font-weight: 300;
+    color: rgba(255,255,255,0.025);
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+    pointer-events: none;
+  }
+  .cta-eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 2rem;
+  }
+  .cta-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.8rem, 5vw, 5rem);
+    font-weight: 300; color: var(--white); line-height: 1.1;
+    max-width: 700px; margin-bottom: 1.5rem;
+  }
+  .cta-title em { font-style: italic; color: var(--accent); }
+  .cta-sub {
+    font-size: 1rem; color: rgba(249,246,241,0.6);
+    max-width: 500px; margin-bottom: 3rem; line-height: 1.8;
+  }
+  .cta-buttons {
+    display: flex; gap: 1rem; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 4rem;
+  }
+  .btn-accent {
+    display: inline-block;
+    padding: 1.1rem 2.6rem;
+    background: var(--accent);
+    color: var(--white);
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none;
+    transition: background 0.3s, transform 0.3s;
+  }
+  .btn-accent:hover { background: var(--accent-light); transform: translateY(-2px); }
+  .btn-ghost {
+    display: inline-block;
+    padding: 1.1rem 2.6rem;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-ghost:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .contact-row {
+    display: flex; gap: 3rem; justify-content: center;
+    flex-wrap: wrap;
+  }
+  .contact-item {
+    display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  }
+  .contact-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent-light);
+  }
+  .contact-value {
+    font-size: 0.88rem;
+    color: rgba(249,246,241,0.75);
+    text-decoration: underline;
+    cursor: pointer;
+  }
+  .contact-value:hover { color: var(--accent); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #070707;
+    padding: 2rem 4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; font-weight: 600;
+    color: rgba(255,255,255,0.5);
+  }
+  .footer-copy {
+    font-size: 0.72rem; color: rgba(255,255,255,0.25);
+    letter-spacing: 0.08em;
+  }
+  .footer-rate {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem; letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .fade-up {
+    opacity: 0;
+    animation: fadeUp 0.8s ease forwards;
+  }
+  .fade-up:nth-child(2) { animation-delay: 0.15s; }
+  .fade-up:nth-child(3) { animation-delay: 0.30s; }
+  .fade-up:nth-child(4) { animation-delay: 0.45s; }
+
+  .cover-text > * {
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards;
+  }
+  .cover-text > *:nth-child(1) { animation-delay: 0.1s; }
+  .cover-text > *:nth-child(2) { animation-delay: 0.25s; }
+  .cover-text > *:nth-child(3) { animation-delay: 0.4s; }
+  .cover-text > *:nth-child(4) { animation-delay: 0.55s; }
+  .cover-text > *:nth-child(5) { animation-delay: 0.7s; }
+  .cover-text > *:nth-child(6) { animation-delay: 0.85s; }
+
+  .cover-visual > * {
+    opacity: 0;
+    animation: fadeUp 0.9s ease forwards;
+  }
+  .cover-visual > *:nth-child(1) { animation-delay: 0.5s; }
+  .cover-visual > *:nth-child(2) { animation-delay: 0.7s; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 1.25rem 2rem; }
+    .nav-links { display: none; }
+    section { padding: 5rem 2rem; }
+    #cover { grid-template-columns: 1fr; padding: 8rem 2rem 4rem; }
+    #cover::before { display: none; }
+    .cover-visual { display: none; }
+    #about, #case-study { grid-template-columns: 1fr; gap: 3rem; }
+    .case-left { position: static; }
+    .services-grid, .work-grid, .skills-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    #cta { padding: 5rem 2rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; }
+  }
+
+  a.btn-primary, a.btn-accent, a.contact-value {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+  }
+
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Joymei</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#case-study">Case Study</a>
+    <a href="#process">Process</a>
+    <a href="#cta">Contact</a>
+  </div>
+</nav>
+
+<!-- COVER -->
+<section id="cover">
+  <div class="cover-text">
+    <div class="cover-eyebrow">Real Estate Virtual Assistant</div>
+    <h1 class="cover-title">
+      Your Business,<br><em>Elevated.</em>
+    </h1>
+    <p class="cover-subtitle">Transaction Coordination &amp; Social Media Management</p>
+    <p class="cover-desc">
+      I help US-based real estate agents close more deals, stay organized, and build a brand that attracts clients — without adding to your to-do list.
+    </p>
+    <div>
+  <a href="mailto:va.joymei@gmail.com" class="btn-primary">Work With Me</a>
+      <a href="#case-study" class="btn-outline">See Results</a>
+    </div>
+  </div>
+  <div class="cover-visual">
+    <div class="avatar-frame">
+      <img src="joymei-profile.jpg" alt="Joymei Profile Photo">
+      <div class="avatar-label">Joymei · Real Estate VA · 7+ Years</div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-num">7+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Transactions Supported</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">$15–25</div>
+        <div class="stat-label">Per Hour</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div>
+    <p class="section-eyebrow">About Me</p>
+    <h2 class="section-title">Not Just a VA.<br><em>A Growth Partner.</em></h2>
+    <div class="about-body">
+      <p>Hi, I'm <strong>Joymei</strong> — a Real Estate Executive Assistant, Transaction Coordinator, and Social Media Manager with over <strong>7 years of experience</strong> supporting busy professionals.</p>
+      <p>I specialize in taking the operational weight off real estate agents so you can focus on what you do best: building relationships and closing deals.</p>
+      <p>From managing transactions <strong>contract to close</strong> to creating Instagram content that generates real leads, I bring structure, strategy, and consistency to your business — at every level.</p>
+      <p>Think of me as the systems-driven, detail-obsessed partner your business has been missing.</p>
+    </div>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-item">
+      <div class="skill-icon">🏠</div>
+      <div class="skill-name">Transaction Coordination</div>
+      <div class="skill-desc">Contract to close, timeline tracking, lender &amp; title coordination</div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">📱</div>
+      <div class="skill-name">Social Media Management</div>
+      <div class="skill-desc">Reels, posts, captions, scheduling, engagement strategy</div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">🗂️</div>
+      <div class="skill-name">CRM Management</div>
+      <div class="skill-desc">Lead tracking, follow-up systems, database organization</div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">✉️</div>
+      <div class="skill-name">Client Communication</div>
+      <div class="skill-desc">Timely updates, professional emails, client experience management</div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">📧</div>
+      <div class="skill-name">Email Newsletters</div>
+      <div class="skill-desc">Market updates, listing announcements, nurture campaigns</div>
+    </div>
+    <div class="skill-item">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">Lead Management</div>
+      <div class="skill-desc">Pipeline organization, follow-up cadences, conversion tracking</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">What I Offer</div>
+    <div class="divider-line"></div>
+  </div>
+  <p class="section-eyebrow">Services</p>
+  <h2 class="section-title">Done-For-You Support<br>That <em>Actually Moves</em> the Needle</h2>
+
+  <div class="services-grid">
+    <!-- TC -->
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-tag">Core Service</div>
+      <div class="service-title">Transaction Coordination</div>
+      <ul class="service-list">
+        <li>Full contract-to-close management for buyers &amp; sellers</li>
+        <li>Timeline tracking with milestone alerts &amp; deadline management</li>
+        <li>Coordination with lenders, title companies, inspectors &amp; agents</li>
+        <li>Document collection, review &amp; secure digital organization</li>
+        <li>Consistent client updates throughout the transaction process</li>
+        <li>Contingency removal tracking &amp; compliance checklist management</li>
+        <li>Post-close file archiving &amp; follow-up systems</li>
+      </ul>
+      <div class="service-rate">From $15/hr or Per-Transaction Pricing</div>
+    </div>
+    <!-- SMM -->
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-tag">Core Service</div>
+      <div class="service-title">Social Media Management</div>
+      <ul class="service-list">
+        <li>Monthly content calendar creation &amp; strategy</li>
+        <li>Reel concepts, scripting &amp; editing (listing tours, tips, market updates)</li>
+        <li>Graphic design for posts, stories &amp; carousels</li>
+        <li>SEO-optimized captions designed to generate leads &amp; engagement</li>
+        <li>Hashtag research &amp; scheduling (Instagram, Facebook, LinkedIn)</li>
+        <li>Branding consistency across all platforms</li>
+        <li>Monthly engagement reports &amp; performance review</li>
+      </ul>
+      <div class="service-rate">From $18/hr or Monthly Package Pricing</div>
+    </div>
+    <!-- Add-ons -->
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-tag">Add-On</div>
+      <div class="service-title">CRM &amp; Database Management</div>
+      <ul class="service-list">
+        <li>CRM setup &amp; organization (Follow Up Boss, KVCore, HubSpot)</li>
+        <li>Lead tagging, pipeline management &amp; follow-up sequences</li>
+        <li>Contact database clean-up &amp; segmentation</li>
+        <li>Automated workflow setup &amp; maintenance</li>
+        <li>Weekly lead activity reports</li>
+      </ul>
+      <div class="service-rate">From $15/hr</div>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-tag">Add-On</div>
+      <div class="service-title">Email &amp; Newsletter Campaigns</div>
+      <ul class="service-list">
+        <li>Monthly market update newsletters</li>
+        <li>Listing announcement emails</li>
+        <li>Buyer &amp; seller nurture sequences</li>
+        <li>Past client check-in campaigns</li>
+        <li>Open house &amp; event promotional emails</li>
+      </ul>
+      <div class="service-rate">From $20/hr</div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDY -->
+<section id="case-study">
+  <div class="case-left">
+    <p class="section-eyebrow">Case Study</p>
+    <h2 class="section-title">Real <em>Results</em> for a Real Agent</h2>
+
+    <div class="case-brand-block">
+      <div class="case-brand-name">Malley Real Estate</div>
+      <div class="case-brand-sub">Residential Real Estate · Real Estate Operations Support</div>
+      <div class="case-brand-bio">
+        <strong style="color:var(--accent-light)">Client: Cody Malley</strong><br>
+        Supported a busy real estate business with transaction coordination, listing support, client communication, CRM/database organization, social media assistance, and day-to-day administrative operations.
+      </div>
+    </div>
+
+    <div class="results-grid">
+      <div class="result-box">
+        <div class="result-num">Organized</div>
+        <div class="result-label">Transaction Tracking</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num">Consistent</div>
+        <div class="result-label">Marketing Support</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num">50+</div>
+        <div class="result-label">Transactions Supported</div>
+      </div>
+      <div class="result-box">
+        <div class="result-num">Reliable</div>
+        <div class="result-label">Client Communication</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="case-right">
+    <div class="challenge-block">
+      <div class="block-label">The Challenge</div>
+      <div class="block-title">A Busy Real Estate Business Needing Reliable Support</div>
+      <div class="block-body">
+        Cody needed dependable back-end support to keep transactions, listings, client updates, marketing tasks, and database organization moving smoothly. With multiple priorities happening at once, the goal was to reduce admin overwhelm, keep deadlines organized, and create a more consistent system for day-to-day real estate operations.
+      </div>
+    </div>
+
+    <div class="solution-block">
+      <div class="block-label">What I Did</div>
+      <div class="block-title">Transaction Coordination, Marketing &amp; Operations Support</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="t-dot" style="position:relative">1</div>
+          <div class="t-content">
+            <div class="t-title">CRM &amp; Database Organization</div>
+            Organized contacts, updated lead information, maintained database accuracy, and supported follow-up tracking so Cody could stay connected with buyers, sellers, and past clients.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="t-dot" style="position:relative">2</div>
+          <div class="t-content">
+            <div class="t-title">Transaction Coordination Support</div>
+            Supported contract-to-close tasks including deadline tracking, document organization, client updates, lender/title communication, inspection coordination, and closing-related follow-ups.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="t-dot" style="position:relative">3</div>
+          <div class="t-content">
+            <div class="t-title">Social Media &amp; Listing Marketing Support</div>
+            Built a 30-day content calendar. Created 12 branded posts, 4 Reels (listing tours + market tips), and wrote captions with local hashtag strategies targeting local buyers and sellers.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="t-dot" style="position:relative">4</div>
+          <div class="t-content">
+            <div class="t-title">Client Communication &amp; Email Support</div>
+            Helped prepare professional client updates, follow-up emails, listing messages, and communication templates to keep clients informed and supported.
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="t-dot" style="position:relative">5</div>
+          <div class="t-content">
+            <div class="t-title">Ongoing Operations Support</div>
+            Delivered weekly summaries covering transaction status, social performance, and lead pipeline activity. The Greg & Tina Team always knew exactly where every deal stood.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:2rem; padding:1.5rem; background:var(--cream); border-left:3px solid var(--accent);">
+      <p style="font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-style:italic; color:var(--dark-brown); line-height:1.7;">
+        "This case study reflects the type of support I provide for real estate professionals: organized transaction tracking, clear communication, consistent follow-up, and dependable marketing assistance that helps keep the business moving."
+      </p>
+      <p style="margin-top:0.75rem; font-size:0.78rem; letter-spacing:0.08em; text-transform:uppercase; color:var(--mid-gray);">
+        — Real Estate Operations Support · Malley Real Estate
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SAMPLE WORK -->
+<section id="sample-work">
+  <p class="section-eyebrow">Portfolio Samples</p>
+  <h2 class="section-title">The Work, <em>Up Close</em></h2>
+
+  <div class="work-grid">
+    <!-- Post 1 -->
+    <div class="work-card">
+      <div class="work-card-type">Instagram Post · Market Update</div>
+      <div class="work-card-title">Just Sold — Above Asking</div>
+      <div class="work-card-body">Branded listing announcement with clean layout, property stats, and a strategic caption driving DM inquiries.</div>
+      <div class="mock-instagram">
+        🏠 JUST SOLD — $485,000 | 4 bed · 2.5 bath<br>
+        Multiple offers. Closed 7 days early.<br><br>
+        Thinking of selling in the Local area? Your home could be next.<br>
+        📩 DM me to find out what your home is worth.<br><br>
+        #LocalRealEstate #JustSold #HomeSeller #ListWithUs
+      </div>
+    </div>
+    <!-- Post 2 -->
+    <div class="work-card">
+      <div class="work-card-type">Instagram Reel · Concept</div>
+      <div class="work-card-title">"5 Things Buyers Get Wrong"</div>
+      <div class="work-card-body">Educational Reel script with hook, 5 rapid-fire tips, and a clear CTA. Designed to save &amp; share.</div>
+      <div class="mock-instagram">
+        Hook (0–3 sec): "You're about to lose the house — here's why."<br><br>
+        Points: Skipping pre-approval · Lowballing in a hot market · Ignoring inspection red flags · Forgetting closing costs · Not having a buyer's agent<br><br>
+        CTA: "Follow for weekly real estate tips."
+      </div>
+    </div>
+    <!-- Post 3 -->
+    <div class="work-card">
+      <div class="work-card-type">Transaction Checklist</div>
+      <div class="work-card-title">Contract-to-Close Workflow</div>
+      <div class="work-card-body">Structured milestone tracker used across all managed files to ensure zero missed deadlines.</div>
+      <ul class="checklist">
+        <li>Executed contract received &amp; filed</li>
+        <li>Earnest money deadline confirmed</li>
+        <li>Inspection scheduled &amp; report received</li>
+        <li>Appraisal ordered &amp; completed</li>
+        <li>Lender CTC confirmed</li>
+        <li>Final walkthrough scheduled</li>
+        <li>Closing confirmed with title</li>
+        <li>Post-close follow-up sent to client</li>
+      </ul>
+    </div>
+    <!-- Post 4 -->
+    <div class="work-card">
+      <div class="work-card-type">CRM Dashboard Setup</div>
+      <div class="work-card-title">Lead Pipeline Organization</div>
+      <div class="work-card-body">Structured CRM view with contact stages, follow-up tags, and automated sequence triggers.</div>
+      <ul class="checklist">
+        <li>New Lead → Day 1 email + call task</li>
+        <li>Warm Lead → 3-touch follow-up series</li>
+        <li>Under Contract → TC handoff + updates</li>
+        <li>Closed → 30/90/365-day check-in</li>
+        <li>Referral Source tagged &amp; tracked</li>
+      </ul>
+    </div>
+    <!-- Post 5 -->
+    <div class="work-card">
+      <div class="work-card-type">Newsletter · Sample</div>
+      <div class="work-card-title">Monthly Market Update Email</div>
+      <div class="work-card-body">Clean, branded newsletter sent to past clients &amp; leads with local market stats and a value-added CTA.</div>
+      <div class="mock-instagram">
+        Subject: Local Market Update — What's Happening This Month<br><br>
+        Hey [First Name], here's what's trending in your neighborhood this month…<br>
+        · Avg. list price: $487K (↑ 3.2%)<br>
+        · Days on market: 18 (down from 26)<br>
+        · Seller's market continues in 85254, 85259<br><br>
+        Thinking of making a move? Reply to this email — I'd love to chat.
+      </div>
+    </div>
+    <!-- Post 6 -->
+    <div class="work-card">
+      <div class="work-card-type">Instagram Carousel · Concept</div>
+      <div class="work-card-title">"Is Now a Good Time to Buy?"</div>
+      <div class="work-card-body">7-slide educational carousel addressing buyer objections, designed to generate saves and DMs.</div>
+      <div class="mock-instagram">
+        Slide 1: "Stop waiting for the 'perfect' market." (Hook)<br>
+        Slides 2–6: Data-backed answers to the top 5 buyer concerns<br>
+        Slide 7: "Ready to talk numbers? DM me 'READY'."
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-label">How I Work</div>
+    <div class="divider-line"></div>
+  </div>
+  <p class="section-eyebrow">My Process</p>
+  <h2 class="section-title">Seamless from<br>Day One to <em>Done.</em></h2>
+
+  <div class="process-steps">
+    <div class="process-step">
+      <div class="step-num">01</div>
+      <div class="step-name">Discovery Call</div>
+      <div class="step-desc">We talk through your business, biggest pain points, current tools, and goals. No commitment, just clarity.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">02</div>
+      <div class="step-name">System Setup</div>
+      <div class="step-desc">I audit your existing workflows, set up shared folders, access credentials, and build the systems we'll work from.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">03</div>
+      <div class="step-name">Execution</div>
+      <div class="step-desc">I begin managing transactions, content, and communications. You get daily/weekly check-ins based on your preference.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">04</div>
+      <div class="step-name">Weekly Updates</div>
+      <div class="step-desc">A clear summary of everything completed, in progress, and upcoming. You're always informed — never in the dark.</div>
+    </div>
+    <div class="process-step">
+      <div class="step-num">05</div>
+      <div class="step-name">Optimization</div>
+      <div class="step-desc">Monthly reviews to refine what's working, drop what isn't, and scale our collaboration as your business grows.</div>
+    </div>
+  </div>
+
+  <div class="process-note">
+    <div class="process-note-icon">⚡</div>
+    <div class="process-note-text">
+      <strong>Most clients are fully onboarded within 48–72 hours.</strong> I work async-first but am available for live check-ins during US business hours. All files are organized in shared Google Drive or your preferred platform. Zero learning curve for you.
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <p class="cta-eyebrow">Ready to Scale?</p>
+  <h2 class="cta-title">Let's Grow Your<br>Real Estate <em>Business.</em></h2>
+  <p class="cta-sub">
+    You focus on closing deals. I'll handle the rest — from contracts to content. Let's talk about what your business needs most right now.
+  </p>
+  <div class="cta-buttons">
+    <a href="mailto:va.joymei@gmail.com" class="btn-accent">Send Me a Message</a>
+    <a href="https://www.linkedin.com/in/joy-edeline-0a3352141" target="_blank" class="btn-ghost">View LinkedIn Profile</a>
+  </div>
+  <div class="contact-row">
+    <div class="contact-item">
+      <span class="contact-label">Email</span>
+      <a href="mailto:va.joymei@gmail.com" class="contact-value">va.joymei@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">LinkedIn</span>
+      <a href="https://www.linkedin.com/in/joy-edeline-0a3352141" target="_blank" class="contact-value">joy-edeline</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">WhatsApp</span>
+      <a href="https://wa.me/639171370017" target="_blank" class="contact-value">+63 917 137 0017</a>
+    </div>
+    <div class="contact-item">
+      <span class="contact-label">Rate</span>
+      <span class="contact-value">$15–$25 / hour</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Joymei</div>
+  <div class="footer-copy">Real Estate VA Portfolio · Transaction Coordination &amp; Social Media Management</div>
+  <div class="footer-rate">Available Now · $15–25/hr</div>
+</footer>
+
+
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const email = "va.joymei@gmail.com";
+  const mailLink = "mailto:" + email;
+
+  document.querySelectorAll(".btn-primary, .btn-accent").forEach(function(button) {
+    if (button.textContent.trim() === "Work With Me" || button.textContent.trim() === "Send Me a Message") {
+      button.setAttribute("href", mailLink);
+      button.style.pointerEvents = "auto";
+      button.style.cursor = "pointer";
+    }
+  });
+
+  document.querySelectorAll(".contact-value").forEach(function(link) {
+    if (link.textContent.trim() === email) {
+      link.setAttribute("href", mailLink);
+      link.style.pointerEvents = "auto";
+      link.style.cursor = "pointer";
+    }
+  });
+});
+</script>
+
+</body>
+</html>
